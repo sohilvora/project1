@@ -13,6 +13,7 @@ Route::view('/add_category', 'add_category');
 Route::view('/category', 'category');
 Route::view('/add_product', 'add_product');
 Route::view('/product', 'product');
+Route::view('/shop', 'shop');
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::get('logout', [UserController::class, 'logout']);

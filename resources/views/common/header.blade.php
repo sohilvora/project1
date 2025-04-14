@@ -7,6 +7,7 @@
 <header class="bg-light">
     
     <a href="/" class="m-2 btn border-primary">Home</a>
+    <a href="/shop" class="m-2 btn border-primary">Shop</a>
     <a href="/users_list" class="m-2 btn border-primary">User list</a>
     <a href="/category" class="m-2 btn border-primary">Category</a>
     <a href="/product" class="m-2 btn border-primary">Product</a>
