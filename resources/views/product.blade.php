@@ -11,9 +11,7 @@
 <body>
 
     @include('common.header')
-    @if (!session('email'))
-       <script>window.location.href = '/login';</script>
-    @else
+   
         <h1>Category List</h1>
         @if (session('success'))
             <div class="alert alert-success"><span>{{ session('success') }}</span></div>
@@ -33,6 +31,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Detail</th>
                             <th scope="col">Category</th>
+                            <th scope="col">Image</th>
                             <th class="text-center" scope="col" colspan="2">Action</th>
 
                         </tr>
@@ -52,6 +51,7 @@
                                 <td>{{ $product->p_price }}</td>
                                 <td>{{ $product->p_detail }}</td>
                                 <td>{{ $product->p_category }}</td>
+                                <td>{{ $product->p_image }}</td>
                                 
                                 <td class="text-center"><a href="/update/{{ $product->p_id }}" class="btn btn-warning">Update</a></td>
                                 <td class="text-center"><a href="/deleteproduct/{{ $product->p_id}}"
@@ -63,7 +63,7 @@
             </div>
 
         </div>
-    @endif
+    
     @include('common.footer')
 </body>
 

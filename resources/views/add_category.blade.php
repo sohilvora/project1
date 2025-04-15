@@ -11,11 +11,6 @@
 <body>
     @include('common.header')
 
-    @if (!session('email'))
-        <script>
-            window.location.href = '/login';
-        </script>
-    @else
         @if (session('success'))
             <div class="alert alert-success"><span>{{ session('success') }}</span></div>
         @elseif (session('error'))
@@ -39,7 +34,7 @@
                 </div>
             </form>
         </div>
-    @endif
+    
     @include('common.footer')
 </body>
 

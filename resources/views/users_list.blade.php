@@ -11,9 +11,7 @@
 <body>
 
     @include('common.header')
-    @if (!session('email'))
-       <script>window.location.href = '/login';</script>
-    @else
+   
         <h1>Users List</h1>
         @if (session('success'))
             <div class="alert alert-success"><span>{{ session('success') }}</span></div>
@@ -59,7 +57,7 @@
             </div>
 
         </div>
-    @endif
+    
     @include('common.footer')
 </body>
 

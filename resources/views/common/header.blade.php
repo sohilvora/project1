@@ -5,13 +5,21 @@
 </head>
 
 <header class="bg-light">
-    
+    @if (session('email'))
+        
     <a href="/" class="m-2 btn border-primary">Home</a>
-    <a href="/shop" class="m-2 btn border-primary">Shop</a>
     <a href="/users_list" class="m-2 btn border-primary">User list</a>
     <a href="/category" class="m-2 btn border-primary">Category</a>
     <a href="/product" class="m-2 btn border-primary">Product</a>
+    <a href="/logout" class="m-2 btn border-primary">Logout</a>    
+    @else
+        
+    <a href="/" class="m-2 btn border-primary">Home</a>
+    {{-- <a href="/users_list" class="m-2 btn border-primary">User list</a>
+    <a href="/category" class="m-2 btn border-primary">Category</a>
+    <a href="/product" class="m-2 btn border-primary">Product</a> --}}
     <a href="/register" class="m-2 btn border-primary">Register</a>
     <a href="/login" class="m-2 btn border-primary">Login</a>
-    <a href="/logout" class="m-2 btn border-primary">Logout</a>
+    
+    @endif
 </header>
