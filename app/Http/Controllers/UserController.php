@@ -7,6 +7,11 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::get();
+        return view('users_list', compact('users'));
+    }
     public function register(Request $req)
     {
         $valid = $req->validate([

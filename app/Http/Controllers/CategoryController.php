@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function index()
+    {
+        $category = Category::all();
+        return view('category', ['categories' => $category]);
+    }
     public function addCategory(Request $req)
     {
         $valid = $req->validate([
             'category_name' => 'required',
-
         ]);
         if ($valid) {
             $category = new Category();
@@ -32,10 +36,8 @@ class CategoryController extends Controller
     public function deleteCategory($c_id)
     {
         $category = Category::where('c_id', $c_id)->first();
-        
+
         $category->delete();
         return redirect('/category')->with('success', 'Category deleted successfully');
     }
 }
-
-

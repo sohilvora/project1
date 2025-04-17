@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Controllers\Response;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    public function index()
+    {
+        $products = Product::all();
+        return view('product', ['products' => $products]);
+    }
     public function addProduct(Request $req)
     {
         $valid = $req->validate([
@@ -32,7 +40,6 @@ class ProductController extends Controller
                 $product->p_image = $filename;
                 $product->save();
             }
-
             if ($product->save()) {
                 return redirect('/product')->with('success', 'Product added successfully');
             } else {
@@ -47,13 +54,14 @@ class ProductController extends Controller
             ]);
         }
     }
+    
+    
 
     public function deleteProduct($p_id)
     {
         $product = Product::where('p_id', $p_id)->first();
-        
+
         $product->delete();
         return redirect('/product')->with('success', 'Product deleted successfully');
     }
-
 }

@@ -11,37 +11,33 @@
 <body>
 
     @include('common.header')
-   
-        <h1>Users List</h1>
-        @if (session('success'))
-            <div class="alert alert-success"><span>{{ session('success') }}</span></div>
-        @elseif (session('error'))
-            <div class="alert alert-danger"><span>{{ session('error') }}</span></div>
-        @endif
 
-        <div>
-            <div class="table-responsive">
+    <h1>Users List</h1>
+    @if (session('success'))
+        <div class="alert alert-success"><span>{{ session('success') }}</span></div>
+    @elseif (session('error'))
+        <div class="alert alert-danger"><span>{{ session('error') }}</span></div>
+    @endif
 
-                <table class="table table-primary border table-striped">
-                    <thead>
+    <div>
+        <div class="table-responsive">
+            <table class="table table-primary border table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Mobile</th>
+                        <th class="text-center" scope="col" colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!$users)
                         <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Mobile</th>
-                            <th class="text-center" scope="col" colspan="2">Action</th>
-
+                            <td colspan="5" class="text-center">No Users Found</td>
                         </tr>
-                    </thead>
-                    @php
-
-                        $data = App\Models\User::all();
-                        if ($data->isEmpty()) {
-                            echo "<h1 class='text-center'>No Data Found</h1>";
-                        }
-                    @endphp
-                    <tbody>
-                        @foreach ($data as $user)
+                    @else
+                        @foreach ($users as $user)
                             <tr>
                                 <td scope="row">{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
@@ -52,12 +48,11 @@
                                         class="btn btn-danger">Delete</a></td>
                             </tr>
                         @endforeach
-                    </tbody>
-                </table>
-            </div>
-
+                    @endif
+                </tbody>
+            </table>
         </div>
-    
+    </div>
     @include('common.footer')
 </body>
 
