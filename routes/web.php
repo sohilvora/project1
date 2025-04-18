@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,7 +29,11 @@ Route::group(['middleware' => ['UserAuth']], function () {
     Route::post('search', [HomeController::class, 'searchProduct'])->name('search_product');
     Route::get('product_detail/{id}', [HomeController::class, 'productDetail'])->name('product_detail');
     Route::get('cart', [CartController::class, 'index'])->name('cart');
-    Route::get('addtocart', [CartController::class, 'addToCart'])->name('addtocart');
+    Route::post('addtocart', [CartController::class, 'addToCart'])->name('addtocart');
+    Route::get('remove_from_cart/{id}', [CartController::class, 'removeFromCart'])->name('remove_from_cart');
+    Route::get('proceed/{id}', [CheckoutController::class, 'index'])->name('proceed');
+    Route::post('checkout', [CheckoutController::class, 'checkOut'])->name('checkout');
+    Route::get('/my_order', [OrderController::class, 'myOrder'])->name('my_order');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });
 

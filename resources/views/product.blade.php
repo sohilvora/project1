@@ -51,8 +51,8 @@
                                 <td>{{ $product->p_c_id }}</td>
                                 <td>{{ $product->p_image }}</td>
 
-                                <td class="text-center"><a href="/update/{{ $product->p_id }}"
-                                        class="btn btn-warning">Update</a></td>
+                                {{-- <td class="text-center"><a href="/update/{{ $product->p_id }}"
+                                        class="btn btn-warning">Update</a></td> --}}
                                 <td class="text-center"><a href="/deleteproduct/{{ $product->p_id }}"
                                         class="btn btn-danger">Delete</a></td>
                             </tr>

@@ -10,6 +10,9 @@
 
 <body>
     @include('common.header')
+    @if (session('error'))
+        <div class="alert alert-danger"><span>{{ session('error') }}</span></div>
+    @endif
     <div class="container col-lg-12">
         <div class="col-lg-12 justify-content-center">
 

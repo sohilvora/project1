@@ -11,6 +11,7 @@
         <a href="{{ route('category') }}" class="m-2 btn border-primary">Category</a>
         <a href="{{ route('product') }}" class="m-2 btn border-primary">Product</a>
         <a href="{{ route('cart') }}" class="m-2 btn border-primary">Cart</a>
+        <a href="{{ route('my_order') }}" class="m-2 btn border-primary">Myorder</a>
         <a href="{{ route('logout') }}" class="m-2 btn border-primary">Logout</a>
     @else
         <a href="/" class="m-2 btn border-primary">Home</a>

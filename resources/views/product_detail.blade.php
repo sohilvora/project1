@@ -38,18 +38,25 @@
                 <!-- Quantity Selector -->
                 <div class="d-flex align-items-center mb-4">
                   <label class="me-2 fw-semibold" for="quantity">Quantity:</label>
-                  <input type="number" id="qty" value="1" min="1" class="form-control w-25"/>
+                  <input type="number" name="qty" id="qty" value="1" min="1" class="form-control w-25"/>
                 </div>
           
-                <!-- Add to Cart Button -->
-                <button class="btn btn-primary btn-lg">
-                  <i class="bi bi-cart-plus me-2"></i>Add to Cart
-                </button>
+                <form action="{{ route('addtocart', ['p_id' => $product->p_id]) }}" method="POST">
+                  @csrf
+                  <input type="hidden" name="qty" id="formQty" value="1">
+                  <button type="submit" class="btn btn-primary btn-lg">Add To Cart</button>
+                </form>
+                
               </div>
             </div>
           </div>
           
     </div>
+    <script>
+      document.getElementById('qty').addEventListener('input', function () {
+        document.getElementById('formQty').value = this.value;
+      });
+    </script>
     @include('common.footer')
 
 </html>

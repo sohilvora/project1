@@ -54,7 +54,7 @@ class UserController extends Controller
             $user = User::where('email', $req->email)->first();
             if ($user->email == $req->email && $user->password == $req->password) {
                 // Store user data in session
-                $req->session()->put('email', $user->email);
+                $req->session()->put(['email' => $user->email, 'user_id' => $user->id]);
                 return redirect('/');
             } else {
                 return redirect('/login')->with('error', 'Invalid credentials');
