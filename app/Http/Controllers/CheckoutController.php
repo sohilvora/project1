@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Checkout;
+use App\Models\Order;
 
 class CheckoutController extends Controller
 {
@@ -24,10 +25,9 @@ class CheckoutController extends Controller
             ->get();
 
         $order_id = rand(1000, 9999);
-        foreach ($cartItems as $item) {
+       
             $checkout = new Checkout();
             $checkout->order_id = $order_id;
-            $checkout->p_id = $item->product->p_id;
             $checkout->user_id = $userId;
             $checkout->name = $req->name;
             $checkout->email = $req->email;
@@ -37,8 +37,17 @@ class CheckoutController extends Controller
             $checkout->landmark = $req->landmark;
             $checkout->save();
 
-            Cart::find($item->id)->delete();
+            // Cart::find($item->id)->delete();
+       
+            $checkout_id = $checkout->id;
+        foreach ($cartItems as $item) {
+            
+            $order = new Order();
+            $order->p_id = $item->p_id;
+            $order->qty = $item->qty;
+            $order->checkout_id = $checkout_id;
+            $order->save();
         }
-        return redirect(route('my_order'));
+        // return redirect(route('my_order'));
     }
 }

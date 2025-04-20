@@ -59,6 +59,7 @@
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                             <div>
                                 <h6 class="my-0">{{ $item->product->p_name }}</h6>
+                                <input type="hidden" name="qty" value="{{ $item->qty }}">
                                 <small class="text-muted">Qty: {{ $item->qty }}</small>
                             </div>
                             <span class="text-muted">₹{{ $item->product->p_price * $item->qty }}</span>
